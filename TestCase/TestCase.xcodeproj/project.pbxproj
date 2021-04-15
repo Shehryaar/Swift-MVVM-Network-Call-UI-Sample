@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0425276626283B53000C4DD4 /* DialogueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425276526283B53000C4DD4 /* DialogueManager.swift */; };
+		0425276B26283BAD000C4DD4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425276A26283BAD000C4DD4 /* ActivityIndicator.swift */; };
+		0425277626283D82000C4DD4 /* RedirectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425277526283D82000C4DD4 /* RedirectHelper.swift */; };
+		0425277F2628423F000C4DD4 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425277E2628423F000C4DD4 /* Storyboarded.swift */; };
+		04252784262842A8000C4DD4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04252783262842A8000C4DD4 /* UIApplication+Extension.swift */; };
+		04252789262842F8000C4DD4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04252788262842F8000C4DD4 /* UIColor+Extension.swift */; };
+		0425278E2628443D000C4DD4 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0425278D2628443D000C4DD4 /* Color.xcassets */; };
 		047F345A262588E700EAE93D /* TestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F3459262588E700EAE93D /* TestCaseTests.swift */; };
 		047F3465262588E700EAE93D /* TestCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F3464262588E700EAE93D /* TestCaseUITests.swift */; };
 		047F349D26258B6F00EAE93D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F349726258B6F00EAE93D /* MainTabBarController.swift */; };
 		047F349E26258B6F00EAE93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F349926258B6F00EAE93D /* LaunchScreen.storyboard */; };
 		047F349F26258B6F00EAE93D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F349B26258B6F00EAE93D /* Main.storyboard */; };
 		047F34A626258C1100EAE93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F34A426258C1100EAE93D /* AppDelegate.swift */; };
-		047F34A726258C1100EAE93D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F34A526258C1100EAE93D /* SceneDelegate.swift */; };
 		047F34B426258CAA00EAE93D /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F34B326258CAA00EAE93D /* GameDetailViewController.swift */; };
 		047F34B926258CC600EAE93D /* GamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F34B826258CC600EAE93D /* GamesTableViewController.swift */; };
 		047F34C126258CE400EAE93D /* FavouriteGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F34C026258CE400EAE93D /* FavouriteGamesTableViewController.swift */; };
@@ -38,6 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0425276526283B53000C4DD4 /* DialogueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueManager.swift; sourceTree = "<group>"; };
+		0425276A26283BAD000C4DD4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		0425277526283D82000C4DD4 /* RedirectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectHelper.swift; sourceTree = "<group>"; };
+		0425277E2628423F000C4DD4 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		04252783262842A8000C4DD4 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		04252788262842F8000C4DD4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0425278D2628443D000C4DD4 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		047F343F262588E500EAE93D /* TestCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047F3455262588E700EAE93D /* TestCaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		047F3459262588E700EAE93D /* TestCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseTests.swift; sourceTree = "<group>"; };
@@ -49,7 +62,6 @@
 		047F349A26258B6F00EAE93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		047F349C26258B6F00EAE93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		047F34A426258C1100EAE93D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		047F34A526258C1100EAE93D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		047F34B326258CAA00EAE93D /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		047F34B826258CC600EAE93D /* GamesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewController.swift; sourceTree = "<group>"; };
 		047F34C026258CE400EAE93D /* FavouriteGamesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteGamesTableViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +94,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0425276426283B31000C4DD4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0425276526283B53000C4DD4 /* DialogueManager.swift */,
+				0425276A26283BAD000C4DD4 /* ActivityIndicator.swift */,
+				0425277526283D82000C4DD4 /* RedirectHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		0425277D2628420A000C4DD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0425277E2628423F000C4DD4 /* Storyboarded.swift */,
+				04252783262842A8000C4DD4 /* UIApplication+Extension.swift */,
+				04252788262842F8000C4DD4 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		047F3436262588E500EAE93D = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +137,8 @@
 		047F3441262588E500EAE93D /* TestCase */ = {
 			isa = PBXGroup;
 			children = (
+				0425277D2628420A000C4DD4 /* Extensions */,
+				0425276426283B31000C4DD4 /* Helper */,
 				047F34C726258F3700EAE93D /* Assets */,
 				047F34C526258F3700EAE93D /* SupportingFiles */,
 				047F34A326258C1100EAE93D /* App lifecycle */,
@@ -164,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				047F34A426258C1100EAE93D /* AppDelegate.swift */,
-				047F34A526258C1100EAE93D /* SceneDelegate.swift */,
 			);
 			path = "App lifecycle";
 			sourceTree = "<group>";
@@ -205,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				047F34C826258F3700EAE93D /* Assets.xcassets */,
+				0425278D2628443D000C4DD4 /* Color.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -313,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				047F349F26258B6F00EAE93D /* Main.storyboard in Resources */,
+				0425278E2628443D000C4DD4 /* Color.xcassets in Resources */,
 				047F349E26258B6F00EAE93D /* LaunchScreen.storyboard in Resources */,
 				047F34CA26258F3700EAE93D /* Assets.xcassets in Resources */,
 			);
@@ -342,9 +377,14 @@
 				047F34A626258C1100EAE93D /* AppDelegate.swift in Sources */,
 				047F34C126258CE400EAE93D /* FavouriteGamesTableViewController.swift in Sources */,
 				047F34B926258CC600EAE93D /* GamesTableViewController.swift in Sources */,
+				04252789262842F8000C4DD4 /* UIColor+Extension.swift in Sources */,
 				047F34B426258CAA00EAE93D /* GameDetailViewController.swift in Sources */,
+				0425276B26283BAD000C4DD4 /* ActivityIndicator.swift in Sources */,
+				0425277F2628423F000C4DD4 /* Storyboarded.swift in Sources */,
+				0425276626283B53000C4DD4 /* DialogueManager.swift in Sources */,
+				0425277626283D82000C4DD4 /* RedirectHelper.swift in Sources */,
+				04252784262842A8000C4DD4 /* UIApplication+Extension.swift in Sources */,
 				047F349D26258B6F00EAE93D /* MainTabBarController.swift in Sources */,
-				047F34A726258C1100EAE93D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
