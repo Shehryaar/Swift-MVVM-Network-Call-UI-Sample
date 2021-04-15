@@ -1,13 +1,13 @@
 //
-//  GamesTableViewController.swift
+//  FavouriteGamesCollectionViewController.swift
 //  TestCase
 //
-//  Created by Shehryar on 13/04/2021.
+//  Created by Shehryar on 15/04/2021.
 //
 
 import UIKit
 
-class GamesTableViewController: UIViewController {
+class FavouriteGamesCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

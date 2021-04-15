@@ -1,66 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcM-iE-fii">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourite Games Table View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="RdJ-ub-RVM">
+            <objects>
+                <navigationController storyboardIdentifier="FavouriteGamesNavigationViewController" id="Bi1-jK-Sws" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tul-0p-h2z">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lpq-ee-m3F" kind="relationship" relationship="rootViewController" id="d1W-fr-PfI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U6F-Xc-YFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-825" y="3"/>
+        </scene>
+        <!--Favourite Games Collection View Controller-->
         <scene sceneID="Vb1-8K-0Bz">
             <objects>
-                <viewController storyboardIdentifier="FavouriteGamesTableViewController" id="Lpq-ee-m3F" customClass="FavouriteGamesTableViewController" customModule="TestCase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteGamesTableViewController" id="Lpq-ee-m3F" customClass="FavouriteGamesCollectionViewController" customModule="TestCase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FhR-yf-81d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkL-f0-D81">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Gm-1e-W9Q">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8NH-XC-6YI">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="slW-Rj-0L0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EkL-f0-D81" firstAttribute="top" secondItem="slW-Rj-0L0" secondAttribute="top" id="2hX-ju-sLw"/>
-                            <constraint firstItem="slW-Rj-0L0" firstAttribute="bottom" secondItem="EkL-f0-D81" secondAttribute="bottom" id="Cxi-4B-A2k"/>
-                            <constraint firstItem="EkL-f0-D81" firstAttribute="leading" secondItem="slW-Rj-0L0" secondAttribute="leading" id="jf6-Co-tdt"/>
-                            <constraint firstItem="slW-Rj-0L0" firstAttribute="trailing" secondItem="EkL-f0-D81" secondAttribute="trailing" id="uAH-cd-zCq"/>
+                            <constraint firstItem="3Gm-1e-W9Q" firstAttribute="leading" secondItem="slW-Rj-0L0" secondAttribute="leading" id="Cf3-ZL-1V4"/>
+                            <constraint firstItem="slW-Rj-0L0" firstAttribute="bottom" secondItem="3Gm-1e-W9Q" secondAttribute="bottom" id="GsS-DW-fMZ"/>
+                            <constraint firstItem="slW-Rj-0L0" firstAttribute="trailing" secondItem="3Gm-1e-W9Q" secondAttribute="trailing" id="bbI-zc-Ch9"/>
+                            <constraint firstItem="3Gm-1e-W9Q" firstAttribute="top" secondItem="slW-Rj-0L0" secondAttribute="top" id="wrs-sF-vSc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="SF2-um-Kdy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T65-99-AQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-115" y="4"/>
         </scene>
-        <!--Games Table View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Qkz-eZ-C1O">
+            <objects>
+                <navigationController storyboardIdentifier="GamesNavigationViewController" id="gcM-iE-fii" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VC5-fG-JDw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6kH-BO-eI9" kind="relationship" relationship="rootViewController" id="d7l-jJ-0m6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0v-NE-gen" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="684"/>
+        </scene>
+        <!--Games Collection View Controller-->
         <scene sceneID="6tK-oh-IHT">
             <objects>
-                <viewController storyboardIdentifier="GamesTableViewController" id="6kH-BO-eI9" customClass="GamesTableViewController" customModule="TestCase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GamesTableViewController" id="6kH-BO-eI9" customClass="GamesCollectionViewController" customModule="TestCase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Al6-I1-yyU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTs-3T-kfG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CP1-Sg-f1H">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s1Y-zi-fG7">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NAe-wy-bHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NAe-wy-bHi" firstAttribute="trailing" secondItem="mTs-3T-kfG" secondAttribute="trailing" id="5ev-hQ-U2Q"/>
-                            <constraint firstItem="NAe-wy-bHi" firstAttribute="bottom" secondItem="mTs-3T-kfG" secondAttribute="bottom" id="HeQ-VJ-RhT"/>
-                            <constraint firstItem="mTs-3T-kfG" firstAttribute="leading" secondItem="NAe-wy-bHi" secondAttribute="leading" id="PuX-WH-WOB"/>
-                            <constraint firstItem="mTs-3T-kfG" firstAttribute="top" secondItem="NAe-wy-bHi" secondAttribute="top" id="vaa-1l-BJ1"/>
+                            <constraint firstItem="NAe-wy-bHi" firstAttribute="trailing" secondItem="CP1-Sg-f1H" secondAttribute="trailing" id="hiG-ft-Nq6"/>
+                            <constraint firstItem="NAe-wy-bHi" firstAttribute="bottom" secondItem="CP1-Sg-f1H" secondAttribute="bottom" id="lyC-hp-SBE"/>
+                            <constraint firstItem="CP1-Sg-f1H" firstAttribute="top" secondItem="NAe-wy-bHi" secondAttribute="top" id="mVm-Ah-3eN"/>
+                            <constraint firstItem="CP1-Sg-f1H" firstAttribute="leading" secondItem="NAe-wy-bHi" secondAttribute="leading" id="qBD-GH-VTU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="YiX-eO-Gdf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SH1-k5-MPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="3"/>
+            <point key="canvasLocation" x="-116" y="684"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rep-S8-QfZ">
+            <objects>
+                <navigationController storyboardIdentifier="GameDetailNavigationViewController" id="PmJ-9p-xHh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2YQ-ju-dwV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kag-pJ-i3a" kind="relationship" relationship="rootViewController" id="drc-y8-5VB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2J-Bw-ya8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="395"/>
         </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="75K-vr-txq">
@@ -72,10 +137,11 @@
                         <viewLayoutGuide key="safeArea" id="dwg-W5-uUJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="I7Q-Gc-txc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ge0-ta-Cmq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="3"/>
+            <point key="canvasLocation" x="1412" y="394"/>
         </scene>
     </scenes>
     <resources>
