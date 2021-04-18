@@ -9,8 +9,9 @@ import Foundation
 
 // TODO:- Please change this model according to API response
 
-struct GameModel {
-    var postImage:String?
-    var postId :Int
-    var isMarkingAllowed :Bool
+struct GameModel:Codable, CodableInit {
+    var WARNING:String?
+    var count :Int
+    var next :String?
+    var previous :String?
 }

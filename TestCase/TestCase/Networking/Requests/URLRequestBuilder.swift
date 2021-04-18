@@ -44,7 +44,9 @@ extension URLRequestBuilder {
     }
     
     var requestURL: URL {
-        return mainURL.appendingPathComponent(path)
+        //return mainURL.appendingPathComponent(path)
+        let finalPath = "\(mainURL.absoluteString)\(path)"
+        return URL(string: finalPath)!
     }
     
     var urlRequest: URLRequest {

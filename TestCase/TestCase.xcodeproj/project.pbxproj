@@ -70,6 +70,7 @@
 		04CB45F9262C119800765AA3 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB45EB262C119800765AA3 /* DefaultResponse.swift */; };
 		04CB45FA262C119800765AA3 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB45ED262C119800765AA3 /* URLRequestBuilder.swift */; };
 		04CB45FB262C119800765AA3 /* UploadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB45EE262C119800765AA3 /* UploadData.swift */; };
+		04CB4610262C142500765AA3 /* GameRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB460F262C142500765AA3 /* GameRoutes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		04CB45EB262C119800765AA3 /* DefaultResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		04CB45ED262C119800765AA3 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		04CB45EE262C119800765AA3 /* UploadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadData.swift; sourceTree = "<group>"; };
+		04CB460F262C142500765AA3 /* GameRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoutes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +468,7 @@
 		04CB45EF262C119800765AA3 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				04CB460F262C142500765AA3 /* GameRoutes.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				04252789262842F8000C4DD4 /* UIColor+Extension.swift in Sources */,
 				047F34B426258CAA00EAE93D /* GameDetailViewController.swift in Sources */,
 				0425279E262856F8000C4DD4 /* FavouriteGamesCollectionViewController.swift in Sources */,
+				04CB4610262C142500765AA3 /* GameRoutes.swift in Sources */,
 				04CB45DD262C111600765AA3 /* SessionDelegate.swift in Sources */,
 				0425276B26283BAD000C4DD4 /* ActivityIndicator.swift in Sources */,
 				04CB45C9262C111600765AA3 /* RedirectHandler.swift in Sources */,

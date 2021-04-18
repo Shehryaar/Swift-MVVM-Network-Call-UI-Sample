@@ -34,10 +34,25 @@ class GameViewModel {
     
     init() {
         
-        let gamesList = [GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false),GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true),
-                         GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false)]
-        let games = Games(gamesList: gamesList)
-        items.append(games)
+//        let gamesList = [GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false),GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: true),
+//                         GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false), GameModel(postImage: "https://www.shorturl.at/adrwF", postId: 1010, isMarkingAllowed: false)]
+//        let games = Games(gamesList: gamesList)
+//        items.append(games)
+        getGames()
+    }
+    
+    private func getGames() {
+        ActivityIndicator.shared.showLoadingIndicator()
+        GameRoutes.getGames(pageSize: 10, page: 1).send(GameModel.self) { (results) in
+            ActivityIndicator.shared.hideLoadingIndicator()
+            switch results {
+            case .failure(let error):
+                print("\(error.localizedDescription)")
+            //self.delegate.didReceiveValidationError(message: error.localizedDescription)
+            case .success(let data):
+                print(data)
+            }
+        }
     }
 }
 
