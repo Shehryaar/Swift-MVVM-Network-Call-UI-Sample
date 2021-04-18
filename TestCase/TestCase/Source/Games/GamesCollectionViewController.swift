@@ -70,7 +70,8 @@ extension GamesCollectionViewController: UICollectionViewDataSource, UICollectio
         let item = viewModel.items[indexPath.section]
         switch item.type {
         case .game:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCollectionViewCell.identifier, for: indexPath) as? GameCollectionViewCell {
+            if let gameItem = item as? Games, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCollectionViewCell.identifier, for: indexPath) as? GameCollectionViewCell {
+                cell.gameData = gameItem.gamesList[indexPath.row]
                 return cell
             }
         }
@@ -109,7 +110,7 @@ extension GamesCollectionViewController: UICollectionViewDelegateFlowLayout {
 //                    return CGSize(width: (width/3)-2, height: (width/3))
 //                }
 //            }
-            return CGSize(width: (width/3)-2, height: width/3)
+            return CGSize(width: width, height: 200)
         //}
     }
     

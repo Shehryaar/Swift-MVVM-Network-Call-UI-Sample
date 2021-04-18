@@ -9,6 +9,11 @@ import UIKit
 
 class GameCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var lblGameTitle: UILabel!
+    @IBOutlet weak var imgGame: UIImageView!
+    @IBOutlet weak var lblMetacriticScore: UILabel!
+    @IBOutlet weak var lblGameGenere: UILabel!
+    
     static var nib:UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
