@@ -21,12 +21,22 @@ class GameCollectionViewCell: UICollectionViewCell {
         return String(describing: self)
     }
     
-    var gameData: GameModel? {
+    var gameData: GameData? {
         didSet{
             guard let obj = gameData else {
                 return
             }
-            // TODO:- run timer according to backend data
+            lblGameTitle.text = obj.name
+            lblMetacriticScore.text = "\(obj.metacritic)"
+            
+            let url = URL(string: obj.background_image ?? "")
+
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async { [unowned self] in
+                    imgGame.image = UIImage(data: data!)
+                }
+            }
         }
     }
     

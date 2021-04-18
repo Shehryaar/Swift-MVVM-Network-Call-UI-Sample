@@ -35,17 +35,13 @@ class GamesCollectionViewController: UIViewController {
         }
     }
     
-    private func configureView() {
-        self.backButtonRemoveText()
-        self.transparentNavigation()
-    }
-    
     func initialSetup() {
-        configureView()
         collectionView.delegate = self
         collectionView.dataSource = self
         
         collectionView.register(GameCollectionViewCell.nib, forCellWithReuseIdentifier: GameCollectionViewCell.identifier)
+        self.navigationItem.title = "Games"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     //MARK: User Actions

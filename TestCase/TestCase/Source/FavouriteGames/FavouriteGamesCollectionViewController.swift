@@ -13,6 +13,8 @@ class FavouriteGamesCollectionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Favourites"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 

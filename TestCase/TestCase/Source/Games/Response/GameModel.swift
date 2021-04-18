@@ -14,4 +14,23 @@ struct GameModel:Codable, CodableInit {
     var count :Int
     var next :String?
     var previous :String?
+    var results :[GameData]?
+}
+
+struct GameData:Codable, CodableInit {
+    var name:String?
+    var id :Int
+    var slug :String?
+    var released :String?
+    var background_image :String?
+    var metacritic :Int
+    var genres :[GenreData]?
+}
+
+struct GenreData:Codable, CodableInit {
+    var name:String?
+    var id :Int
+    var slug :String?
+    var image_background :String?
+    var games_count :Int
 }

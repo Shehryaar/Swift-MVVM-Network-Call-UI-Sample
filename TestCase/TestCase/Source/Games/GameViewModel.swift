@@ -43,7 +43,7 @@ class GameViewModel {
     
     private func getGames() {
         ActivityIndicator.shared.showLoadingIndicator()
-        GameRoutes.getGames(pageSize: 10, page: 1).send(GameModel.self) { (results) in
+        GameRoutes.getGames(pageSize: 10, page: 1).send(GameModel.self) { [unowned self] (results) in
             ActivityIndicator.shared.hideLoadingIndicator()
             switch results {
             case .failure(let error):
@@ -51,6 +51,10 @@ class GameViewModel {
             //self.delegate.didReceiveValidationError(message: error.localizedDescription)
             case .success(let data):
                 print(data)
+                if let results = data.results {
+                    let games = Games(gamesList: results)
+                    items.append(games)
+                }
             }
         }
     }
@@ -72,9 +76,9 @@ class Games: GameViewModelItem {
     
     var isEmpty = false
     
-    var gamesList: [GameModel]
+    var gamesList: [GameData]
     
-    init(gamesList: [GameModel]) {
+    init(gamesList: [GameData]) {
         self.gamesList = gamesList
         self.isEmpty = rowCount > 0
     }

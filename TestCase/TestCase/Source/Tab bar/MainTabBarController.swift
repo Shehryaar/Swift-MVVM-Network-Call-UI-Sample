@@ -16,7 +16,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         initialSetup()
-        self.tabBar.unselectedItemTintColor = UIColor.white
     }
     
     override func viewWillLayoutSubviews() {
@@ -39,16 +38,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func initialSetup() {
-        
         let gamesTableVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamesNavigationViewController")
         gamesTableVC.tabBarItem.selectedImage = UIImage(named: "home.games.selected")
         gamesTableVC.tabBarItem.image = UIImage(named: "home.games")
-        gamesTableVC.title =  nil
+        gamesTableVC.title =  "Games"
         
         let favouriteGamesTableVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FavouriteGamesNavigationViewController")  as! UINavigationController
         favouriteGamesTableVC.tabBarItem.image = UIImage(named: "home.favouritegames")
         favouriteGamesTableVC.tabBarItem.selectedImage = UIImage(named: "home.favouritegames.selected")
-        favouriteGamesTableVC.title = nil
+        favouriteGamesTableVC.title = "Favorites"
         
         viewControllers = [gamesTableVC, favouriteGamesTableVC]
         
