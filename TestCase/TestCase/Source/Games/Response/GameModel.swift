@@ -25,6 +25,20 @@ struct GameData:Codable, CodableInit {
     var background_image :String?
     var metacritic :Int
     var genres :[GenreData]?
+    
+    func genre() -> String {
+        var finalGenere = ""
+        if let gs = genres {
+            for g in gs {
+                if finalGenere.count > 0 {
+                    finalGenere = "\(finalGenere), \(g.name ?? "")"
+                } else {
+                    finalGenere = "\(g.name ?? "")"
+                }
+            }
+        }
+        return finalGenere
+    }
 }
 
 struct GenreData:Codable, CodableInit {

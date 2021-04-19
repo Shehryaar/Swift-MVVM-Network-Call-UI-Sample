@@ -20,6 +20,21 @@ class DialogueManager {
         }))
         viewController.present(alert, animated: true)
     }
+    
+    static func showConfirm(viewController: UIViewController, title: String, message: String, yesHandler: @escaping methodHandler1, noHandler: @escaping methodHandler1) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "no", style: .default, handler: { action in
+            noHandler()
+        }))
+        alert.addAction(UIAlertAction(title: "yes", style: .destructive, handler: { action in
+            yesHandler()
+        }))
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
+            viewController.present(alert, animated: true)
+        })
+    }
 }
 
 public extension UIAlertController {
