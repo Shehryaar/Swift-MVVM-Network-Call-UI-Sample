@@ -39,6 +39,11 @@ class GameViewModel {
     private var page = 0
     private let pageSize = 10
     private var isDataLoading = false
+    private var isSearching = false
+    
+    private var totalGames = 0
+    private var totalSearchedGames = 0
+    private var searchString = ""
     
     init() {
         self.getGames()
@@ -56,10 +61,13 @@ class GameViewModel {
                 self.isDataLoading = false
             case .success(let data):
                 if let results = data.results {
+                    totalGames = data.count ?? 0
                     games.append(Games(gamesList: results))
                     items = games
                 }
-                self.isDataLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isDataLoading = false
+                }
             }
         }
     }
@@ -74,13 +82,16 @@ class GameViewModel {
                 self.isDataLoading = false
             case .success(let data):
                 if let results = data.results {
+                    totalSearchedGames = data.count ?? 0
                     if self.filterPage == 1 {
                         filteredGames.removeAll()
                     }
                     filteredGames.append(Games(gamesList: results))
                     items = filteredGames
                 }
-                self.isDataLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isDataLoading = false
+                }
             }
         }
     }
@@ -97,12 +108,34 @@ class GameViewModel {
         return UITableViewCell()
     }
     
-    func paginate(row: Int) {
-        let count = items.count
-        if row == items.count - 1 && !isDataLoading && count < 100 /*&& !self.isFirstLoad*/ {
-            //self.getGames()
+    func fetchedGamesCount() -> Int {
+        var count = 0
+        for game in self.items {
+            count = count + game.rowCount
         }
-        //self.isFirstLoad = false
+        return count
+    }
+    
+    func totalGameAvailableToFetch() -> Int {
+        if isSearching {
+            return totalSearchedGames
+        }
+        return totalGames
+    }
+    
+    func paginate(indexpath: IndexPath) {
+        if indexpath.section == self.items.count - 1 { // make sure it is last section
+            let item = self.items[indexpath.section]
+            let count = item.rowCount
+            if indexpath.row == count - 1 && !isDataLoading && fetchedGamesCount() < totalGameAvailableToFetch() {
+                self.isDataLoading = true
+                if isSearching {
+                    self.getGames(string: searchString)
+                } else {
+                    self.getGames()
+                }
+            }
+        }
     }
     
     func getSwipeTitle(indexpath: IndexPath) -> String {
@@ -148,9 +181,11 @@ class GameViewModel {
     
     func makeSearch(string: String) {
         if string.count > 2 {
+            isSearching = true
             self.filterPage = 0
             getGames(string: string)
         } else {
+            isSearching = false
             items = games
         }
     }
