@@ -37,6 +37,7 @@ class FavouriteGamesViewModel {
         case .game:
             if let gameItem = item as? Games, let cell = tableView.dequeueReusableCell(withIdentifier: GameTableViewCell.identifier, for: indexPath) as? GameTableViewCell {
                 cell.gameData = gameItem.gamesList[indexPath.row]
+                cell.viewContainer.backgroundColor = .tint_3
                 return cell
             }
         }
@@ -48,7 +49,7 @@ class FavouriteGamesViewModel {
         if let gameItem = item as? Games {
             let userDefaults = UserDefaults.standard
             let game = gameItem.gamesList[indexpath.row]
-            if userDefaults.isFavourite(id: game.id) {
+            if userDefaults.isFavourite(id: game.id ?? 0) {
                 return "Delete favourite"
             } else {
                 return "Mark favourite"
@@ -62,14 +63,26 @@ class FavouriteGamesViewModel {
         if let gameItem = item as? Games {
             let userDefaults = UserDefaults.standard
             let game = gameItem.gamesList[indexpath.row]
-            if userDefaults.isFavourite(id: game.id) {
+            if userDefaults.isFavourite(id: game.id ?? 0) {
                 DialogueManager.showConfirm(viewController: viewController, title:"", message: "Are you sure you want to delete this game from favourite list?", yesHandler: {
-                    userDefaults.removeFavourite(id: game.id)
+                    userDefaults.removeFavourite(id: game.id ?? 0)
                     self.getFavouriteGames()
                 }){}
             } else {
                 userDefaults.setFavourite(game: game)
             }
         }
+    }
+    
+    func pushDetailScreen(indexpath:IndexPath, vc:FavouriteGamesTableViewController) {
+        let gameDetailvVC = GameDetailViewController.instantiateMain()
+        let item = items[indexpath.section]
+        switch item.type {
+        case .game:
+            if let gameItem = item as? Games {
+                gameDetailvVC.gameId = gameItem.gamesList[indexpath.row].id ?? 0
+            }
+        }
+        vc.navigationController?.pushViewController(gameDetailvVC, animated: true)
     }
 }

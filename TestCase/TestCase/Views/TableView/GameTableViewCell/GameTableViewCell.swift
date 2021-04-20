@@ -18,6 +18,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var imgGame: UIImageView!
     @IBOutlet weak var lblMetacriticScore: UILabel!
     @IBOutlet weak var lblGameGenere: UILabel!
+    @IBOutlet weak var viewContainer: UIView!
     
     static var nib:UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -32,14 +33,13 @@ class GameTableViewCell: UITableViewCell {
                 return
             }
             lblGameTitle.text = obj.name
-            lblMetacriticScore.text = "\(obj.metacritic)"
+            lblMetacriticScore.text = "\(obj.metacritic ?? 0)"
             
             let url = URL(string: obj.background_image ?? "google.com")!
             imgGame.kf.setImage(
                 with: url,
                 placeholder: UIImage.init(named: "noImage"),
                 options: [
-                    .loadDiskFileSynchronously,
                     .cacheOriginalImage,
                     .transition(.fade(0.25))
                 ],
@@ -51,6 +51,7 @@ class GameTableViewCell: UITableViewCell {
                 }
             )
             lblGameGenere.text = obj.genre()
+            viewContainer.backgroundColor = obj.backgroundColor()
         }
     }
     

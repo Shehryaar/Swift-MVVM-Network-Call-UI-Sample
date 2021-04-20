@@ -24,7 +24,6 @@ extension APIRequestHandler where Self: URLRequestBuilder {
                 self.handleResponse(response, completion: then)
             }.responseJSON { (response) in
                     // handle debug
-                print(response.value as Any)
             }
         }
     }

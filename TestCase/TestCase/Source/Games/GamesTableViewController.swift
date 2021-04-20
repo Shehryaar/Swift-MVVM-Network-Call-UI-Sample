@@ -10,7 +10,7 @@ import UIKit
 class GamesTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var searchBar:UISearchBar?
+    
     lazy var viewModel:GameViewModel = {
         let vm = GameViewModel()
         vm.delegate = self
@@ -21,21 +21,32 @@ class GamesTableViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
         
-        //        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.75, height: 50))
-        //        searchBar?.searchTextField.cornerRadius = 18
-        //        searchBar?.searchTextField.borderWidth = 0.5
-        //        searchBar?.searchTextField.borderColor = .tint_1
-        //        searchBar?.searchTextField.font = UIFont.systemFont(ofSize: 14)
-        //        searchBar?.placeholder = "What are you looking for?"
-        //        let leftNavBarButton = UIBarButtonItem(customView:searchBar!)
-        //        self.navigationItem.leftBarButtonItem = leftNavBarButton
-        
         viewModel.updateData = {
             self.tableView.reloadData()
         }
     }
     
-    func initialSetup() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    private func setupSearchBar() {
+        let controller = UISearchController(searchResultsController: nil)
+        
+        controller.searchResultsUpdater = self
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.placeholder = "Search for the games"
+        definesPresentationContext = true
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = controller
+        } else {
+            navigationItem.titleView = controller.searchBar
+        }
+    }
+    
+    private func initialSetup() {
+        setupSearchBar()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -44,11 +55,8 @@ class GamesTableViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    //MARK: User Actions
-    @IBAction func filterAction(_ sender: UIButton) {
-        // TODO:- fix transition - https://www.thorntech.com/2016/03/ios-tutorial-make-interactive-slide-menu-swift/
-        // let vc = FilterViewController.instantiateSearch()
-        // transitionVc(vc: vc, duration: 0.5, type: .fromRight)
+    @objc func getHintsFromSearchBar(searchBar: UISearchBar) {
+        viewModel.makeSearch(string: searchBar.text ?? "")
     }
 }
 
@@ -70,6 +78,7 @@ extension GamesTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.pushDetailScreen(indexpath: indexPath, vc: self)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -95,3 +104,20 @@ extension GamesTableViewController: UITableViewDelegate, UITableViewDataSource {
 extension GamesTableViewController: GameViewModelDelegate {
     
 }
+
+extension GamesTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        //below code will cause a bit delay in search in order to give user time to type
+        // this will help to reduce api call count and good user experience
+        
+        NSObject.cancelPreviousPerformRequests(
+            withTarget: self,
+            selector: #selector(GamesTableViewController.getHintsFromSearchBar),
+            object: searchController.searchBar)
+        self.perform(
+            #selector(GamesTableViewController.getHintsFromSearchBar),
+            with: searchController.searchBar,
+            afterDelay: 1)
+    }
+}
+

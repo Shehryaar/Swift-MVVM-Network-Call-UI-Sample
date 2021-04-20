@@ -31,7 +31,7 @@ class FavouriteGamesTableViewController: UIViewController {
         viewModel.getFavouriteGames()
     }
     
-    func initialSetup() {
+    private func initialSetup() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -66,6 +66,7 @@ extension FavouriteGamesTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.pushDetailScreen(indexpath: indexPath, vc: self)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

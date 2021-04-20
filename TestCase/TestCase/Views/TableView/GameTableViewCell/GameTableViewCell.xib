@@ -94,6 +94,7 @@
                 <outlet property="lblGameGenere" destination="bPh-Fg-lwf" id="WwW-NO-5sH"/>
                 <outlet property="lblGameTitle" destination="7TJ-Uu-Ldz" id="YPL-Fl-Z2b"/>
                 <outlet property="lblMetacriticScore" destination="Ip8-v3-hrJ" id="eZp-42-4xn"/>
+                <outlet property="viewContainer" destination="AEz-Dv-Bl5" id="fE8-qj-Yo1"/>
             </connections>
             <point key="canvasLocation" x="336.95652173913044" y="96.428571428571431"/>
         </tableViewCell>

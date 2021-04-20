@@ -31,7 +31,11 @@ class GameViewModel {
         }
     }
     
+    private var games = [GameViewModelItem]()
+    private var filteredGames = [GameViewModelItem]()
+    
     var updateData : (() -> ()) = {}
+    private var filterPage = 0
     private var page = 0
     private let pageSize = 10
     private var isDataLoading = false
@@ -48,12 +52,33 @@ class GameViewModel {
             ActivityIndicator.shared.hideLoadingIndicator()
             switch results {
             case .failure(let error):
-                print("\(error.localizedDescription)")
+                print("\(error)")
                 self.isDataLoading = false
             case .success(let data):
                 if let results = data.results {
-                    let games = Games(gamesList: results)
-                    items.append(games)
+                    games.append(Games(gamesList: results))
+                    items = games
+                }
+                self.isDataLoading = false
+            }
+        }
+    }
+    
+    private func getGames(string: String) {
+        self.filterPage = self.filterPage + 1
+        self.isDataLoading = true
+        GameRoutes.searchGames(pageSize: pageSize, page: filterPage, string: string).send(GameModel.self) { [unowned self] (results) in
+            switch results {
+            case .failure(let error):
+                print("\(error)")
+                self.isDataLoading = false
+            case .success(let data):
+                if let results = data.results {
+                    if self.filterPage == 1 {
+                        filteredGames.removeAll()
+                    }
+                    filteredGames.append(Games(gamesList: results))
+                    items = filteredGames
                 }
                 self.isDataLoading = false
             }
@@ -85,7 +110,7 @@ class GameViewModel {
         if let gameItem = item as? Games {
             let userDefaults = UserDefaults.standard
             let game = gameItem.gamesList[indexpath.row]
-            if userDefaults.isFavourite(id: game.id) {
+            if userDefaults.isFavourite(id: game.id ?? 0) {
                 return "Delete favourite"
             } else {
                 return "Mark favourite"
@@ -99,13 +124,34 @@ class GameViewModel {
         if let gameItem = item as? Games {
             let userDefaults = UserDefaults.standard
             let game = gameItem.gamesList[indexpath.row]
-            if userDefaults.isFavourite(id: game.id) {
+            if userDefaults.isFavourite(id: game.id ?? 0) {
                 DialogueManager.showConfirm(viewController: viewController, title:"", message: "Are you sure you want to delete this game from favourite list?", yesHandler: {
-                    userDefaults.removeFavourite(id: game.id)
+                    userDefaults.removeFavourite(id: game.id ?? 0)
                 }){}
             } else {
                 userDefaults.setFavourite(game: game)
             }
+        }
+    }
+    
+    func pushDetailScreen(indexpath:IndexPath, vc:GamesTableViewController) {
+        let gameDetailvVC = GameDetailViewController.instantiateMain()
+        let item = items[indexpath.section]
+        switch item.type {
+        case .game:
+            if let gameItem = item as? Games {
+                gameDetailvVC.gameId = gameItem.gamesList[indexpath.row].id ?? 0
+            }
+        }
+        vc.navigationController?.pushViewController(gameDetailvVC, animated: true)
+    }
+    
+    func makeSearch(string: String) {
+        if string.count > 2 {
+            self.filterPage = 0
+            getGames(string: string)
+        } else {
+            items = games
         }
     }
 }
