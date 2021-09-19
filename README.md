@@ -1,1 +1,1 @@
-# Technical-Test-Case
+# Swift-MVVM-Network-Call-UI-Sample
